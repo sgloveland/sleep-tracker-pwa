@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-title>History</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="handleClearData()" color="tertiary">Clear</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-segment [(ngModel)]="mode" (ionChange)="segmentChanged($event)" swipe-gesture="true">
+  <ion-segment-button value="overnight">
+      <ion-label> <ion-text color="dark">Overnight</ion-text></ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="sleepiness">
+    <ion-label><ion-text color="dark">Sleepiness</ion-text></ion-label>
+  </ion-segment-button>
+</ion-segment>
+
+<ion-content *ngIf="this.isOvernight && this.allOvernightData.length == 0" class="emptyList">
+  <ion-icon id="icon" name="bed-outline"></ion-icon>
+  <h5>Oops, looks like you have no logs to display. Go log some overnight sleep data from the Home Screen!</h5>
+</ion-content>
+
+<ion-content *ngIf="!this.isOvernight && this.allSleepinessData.length == 0" class="emptyList">
+  <ion-icon id="icon" name="bed-outline"></ion-icon>
+  <h5>Oops, looks like you have no logs to display. Go log some sleepiness data from the Home Screen!</h5>
+</ion-content>
+
+
+<ion-content *ngIf="this.isOvernight">
+  <app-overnight-card *ngFor="let item of this.allOvernightData" [data]="item"></app-overnight-card>
+</ion-content>
+<ion-content *ngIf="!this.isOvernight">
+  <app-sleepiness-card *ngFor="let item of this.allSleepinessData" [data]="item"></app-sleepiness-card>
+</ion-content>

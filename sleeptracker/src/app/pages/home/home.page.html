@@ -1,0 +1,31 @@
+<ion-header [translucent]="true" *ngIf="isAndroid">
+  <ion-toolbar>
+    <ion-title class="header">
+      Sleep Tracker
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="background">
+  <ion-header collapse="condense" translucent="true">
+    <ion-title size="large" class="header">Sleep Tracker</ion-title>
+  </ion-header>
+
+  <div id="container">
+    <strong>Welcome Back, {{user}}</strong>
+    <ion-title size="small" slot="end">{{ today | date: 'medium' }}</ion-title>  
+  </div>
+
+  <app-home-card class="card"></app-home-card>
+
+  <!-- Maybe change to Floating Action Button, then add some additional details to the home screen -->
+  <ion-button id="log-button" expand="block" color="secondary">Create New Log Entry</ion-button>
+  <ion-popover trigger="log-button" triggerAction="click" dismissOnSelect="true" side="top" size="cover">
+    <ng-template>
+      <ion-button color="secondary" (click)="handleOvernightClick()">Log Overnight Sleep</ion-button>
+      <ion-button color="secondary" (click)="handleSleepinessClick()">Log Sleepiness</ion-button>
+    </ng-template>
+  </ion-popover>
+
+  <div class="screenSpacer"></div>
+</ion-content>

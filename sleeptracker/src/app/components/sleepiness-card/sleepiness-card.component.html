@@ -1,0 +1,13 @@
+<ion-card color="primary">
+  <ion-card-header>
+    <ion-button class="button" size="small" (click)="presentActionSheet()">
+      <ion-icon slot="icon-only" name="ellipsis-horizontal-circle-outline" ></ion-icon>
+    </ion-button>
+    <ion-card-subtitle>Sleepiness Log</ion-card-subtitle>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-label class="ion-text-wrap"><strong>When: </strong>{{this.dateString}}</ion-label>
+    <br>
+    <ion-label class="ion-text-wrap"><strong>Summary: </strong>{{this.summary}}</ion-label>
+  </ion-card-content>
+</ion-card>

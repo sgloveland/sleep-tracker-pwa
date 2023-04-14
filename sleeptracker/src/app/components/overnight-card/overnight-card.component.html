@@ -1,0 +1,17 @@
+<ion-card color="primary">
+  <ion-card-header>
+    <ion-button class="button" size="small" (click)="presentActionSheet()">
+      <ion-icon slot="icon-only" name="ellipsis-horizontal-circle-outline" ></ion-icon>
+    </ion-button>
+    <ion-card-subtitle>Overnight Log</ion-card-subtitle>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-label class="ion-text-wrap"><strong>When: </strong>{{date}}</ion-label>
+    <br>
+    <ion-label class="ion-text-wrap"><strong>Slept at: </strong>{{data.startDate.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' })}}</ion-label>
+    <br>
+    <ion-label class="ion-text-wrap"><strong>Woke up at: </strong>{{data.endDate.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' })}}</ion-label>
+    <br>
+    <ion-label class="ion-text-wrap"><strong>Duration: </strong> {{summary}}</ion-label>
+  </ion-card-content>
+</ion-card>

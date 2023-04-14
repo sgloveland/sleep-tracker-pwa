@@ -1,0 +1,21 @@
+<ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+  <ion-refresher-content></ion-refresher-content>
+</ion-refresher>
+<ion-card color="primary">
+  <ion-card-header>
+    <ion-card-title>Overview</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-card-subtitle class="header">Overnight:</ion-card-subtitle>
+    <p *ngIf="notEnoughOvernightData">Sorry, we need at least 7 overnight sleep data logs in order to show you an overview. Get to logging!</p>
+    <p *ngIf="!notEnoughOvernightData">Based on your last 7 logs, you slept for an average duration of <ion-text color="tertiary"><strong>{{averageDuration}}</strong></ion-text> per night! <br>
+    Your longest sleep duration was <strong>{{longestOvernightDuration}}</strong> which occured from <strong>{{longestOvernightStart.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit'})}}</strong> to <strong>{{longestOvernightEnd.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit'})}}</strong>.
+    </p>
+    
+    <ion-card-subtitle class="header bottom">Sleepiness:</ion-card-subtitle>
+    <p *ngIf="notEnoughSleepinessData">Sorry, we need at least 10 sleepiness logs in order to provide an overview. Get to logging!</p>
+    <p *ngIf="!notEnoughSleepinessData">Based on your last 10 sleepiness logs, your highest logged value was a <ion-text color="tertiary">{{highestSleepinessLog}}</ion-text> on <strong>{{highestSleepinessDate.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit'})}}</strong>. <br>
+      Your lowest logged value was a <ion-text color="tertiary"><strong>{{lowestSleepinessLog}}</strong></ion-text> on <strong>{{lowestSleepinessDate.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit'})}}</strong>.
+    </p>
+  </ion-card-content>
+</ion-card>
